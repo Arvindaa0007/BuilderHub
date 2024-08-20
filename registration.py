@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash
 
 registration_bp = Blueprint('registration', __name__)
 
+# this is main index function
 @registration_bp.route('/')
 def index():
     return render_template('Registration.html')

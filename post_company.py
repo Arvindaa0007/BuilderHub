@@ -4,6 +4,7 @@ import os
 
 post_company_bp = Blueprint('post_company', __name__)
 
+#this function gets all companies from db
 def get_companies_from_db():
     try:
         connection = db_connect()
