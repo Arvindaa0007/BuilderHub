@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"> 
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script> 
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>BUILDERHUB</h1>
+        </div>
+        <div class="header-right">
+            <button onclick="location.href='/post_company';">Post Your Company</button>
+            <button onclick="location.href='/login';">Login</button>
+            <button onclick="location.href='/registration';">Sign Up</button>
+        </div>
+    </header>
+    <br>
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button id="searchButton">Search</button>
+        </div>
+        <div class="container">
+            <div class="company-list" id="companyList">
+            </div>
+            <aside class="filters">
+                <h2>Filters</h2>
+                <form id="filterForm">
+                    <label for="price">Price per 100 sqft:</label>
+                    <input type="text" id="price" name="price">
+                    
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location">
+                    
+                    <label for="experience">Experience:</label>
+                    <input type="text" id="experience" name="experience">
+                    <br>
+                    <button type="submit">Apply Filters</button>
+                </form>
+            </aside>
+        </div>
+        
+    </main>
+</body>
+</html>

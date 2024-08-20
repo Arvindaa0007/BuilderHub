@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .container2 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group .column {
+            width: 48%;
+            margin-bottom: 15px;
+        }
+        .full-width {
+            width: 100%;
+        }
+        .submit-container {
+            display: flex;
+            justify-content: center;
+        }
+        .submit-container button {
+            width: 50%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-container button:hover {
+            background-color: #4cae4c;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>User Registration</h2>
+        <div class="form-group">
+            <div class="column">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div class="column">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+        </div>
+        
+        <div class="container2">
+            <div class="column">
+                <label for="companyname">Company Name:</label>
+                <input type="text" id="companyname" name="companyname" required>
+            </div>
+            <div class="column">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="column">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="column">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="column">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="column">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="column">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="column">
+                <label for="street1">Street1:</label>
+                <input type="text" id="street1" name="street1" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="column">
+                <label for="street2">Street2:</label>
+                <input type="text" id="street2" name="street2">
+            </div>
+            <div class="column">
+                <label for="pincode">Pin-code:</label>
+                <input type="text" id="pincode" name="pincode" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="column">
+                <label for="sex">Sex:</label>
+                <input type="text" id="sex" name="sex" required>
+            </div>
+            <div class="column">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="submit-container">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+

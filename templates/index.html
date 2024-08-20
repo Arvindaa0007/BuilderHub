@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Listings</title>
+    <style>
+        /* Basic styles for company cards */
+        .company-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+        }
+        .company-card img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-right">
+        <button onclick="location.href='{{ url_for(post_company.post_company) }}';">Post Your Company</button>
+        <button onclick="location.href='{{ url_for(login) }}';">Login</button>
+        <button onclick="location.href='{{ url_for(register) }}';">Sign Up</button>
+    </div>
+
+    <div>
+        <input type="text" id="searchInput" placeholder="Search for companies...">
+        <button id="searchButton">Search</button>
+    </div>
+    
+    <form id="filterForm">
+        <input type="text" name="price" placeholder="Max Price">
+        <input type="text" name="location" placeholder="Location">
+        <input type="text" name="experience" placeholder="Min Experience">
+        <button type="submit">Filter</button>
+    </form>
+
+    <div id="companyList"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const companyListDiv = document.getElementById('companyList');
+            const filterForm = document.getElementById('filterForm');
+
+            const fetchCompanies = async () => {
+                const response = await fetch('/api/companies');
+                return await response.json();
+            };
+
+            const renderCompanies = (companies) => {
+                companyListDiv.innerHTML = '';
+                companies.forEach(company => {
+                    const companyCard = document.createElement('div');
+                    companyCard.classList.add('company-card');
+                    companyCard.innerHTML = `
+                        <img src="${company.imgSrc}" alt="${company.name}">
+                        <h2>${company.name}</h2>
+                        <p>${company.details}</p>
+                    `;
+                    companyListDiv.appendChild(companyCard);
+                });
+            };
+
+            const filterCompanies = (companies, filters) => {
+                return companies.filter(company => {
+                    return (!filters.price || company.price <= filters.price) &&
+                        (!filters.location || company.location.toLowerCase().includes(filters.location.toLowerCase())) &&
+                        (!filters.experience || company.experience >= filters.experience);
+                });
+            };
+
+            const searchCompanies = (companies, query) => {
+                return companies.filter(company => {
+                    return company.name.toLowerCase().includes(query.toLowerCase());
+                });
+            };
+
+            searchButton.addEventListener('click', async () => {
+                const query = searchInput.value.trim();
+                const companies = await fetchCompanies();
+                const filteredCompanies = searchCompanies(companies, query);
+                renderCompanies(filteredCompanies);
+            });
+
+            filterForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const filters = {
+                    price: filterForm.price.value.trim() ? parseFloat(filterForm.price.value.trim()) : null,
+                    location: filterForm.location.value.trim(),
+                    experience: filterForm.experience.value.trim() ? parseInt(filterForm.experience.value.trim()) : null,
+                };
+                const companies = await fetchCompanies();
+                const filteredCompanies = filterCompanies(companies, filters);
+                renderCompanies(filteredCompanies);
+            });
+
+            // Initial render
+            fetchCompanies().then(renderCompanies);
+        });
+    </script>
+</body>
+</html>
